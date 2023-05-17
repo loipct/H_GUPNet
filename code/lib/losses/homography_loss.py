@@ -57,10 +57,9 @@ def compute_applyHomography(xy_src, xy_dst,batch_idxs,logger):
         A.append(applyHomography(src, H).view(-1,5,2))
 
     A = torch.cat(A,0).view(-1,2).cuda()
-    #print("H_ls",H_ls)
     return A
 
-def homography_matrix(X, Y,logger):
+def homography_matrix(X, Y):
     N = list(X.size())[0]
     A = torch.zeros(2*N, 9, dtype=torch.float32).cuda()
     A[0::2, 0:2] = X
@@ -77,13 +76,9 @@ def homography_matrix(X, Y,logger):
     
     _, _, V = torch.linalg.svd(A)
     H_torch= torch.reshape(V[-1], (3, 3))
-    if torch.any(H_torch.isnan()):
-        log_str="H is NaN NaN NaN !!!!!"
-        logger.info(log_str)
-    #H_torch = H_torch / H_torch[2, 2]
     return H_torch
     
-def homography_matrix1(xy_src, xy_dst,logger):#Nx2
+def homography_matrix1(xy_src, xy_dst):#Nx2
     src = torch.cat((xy_src,torch.ones(xy_src.shape[0],1).cuda()),1).float()
     dst = torch.cat((xy_dst,torch.ones(xy_dst.shape[0],1).cuda()),1).float()
     n_points = src.shape[0]
@@ -175,9 +170,6 @@ class Homography_Loss(nn.Module):
                 
         flip_mask_points=flip_mask_points.bool().view(-1)
         
-#         print("calib",calib)
-#         print("flip_mask",flip_mask)
-#         print("crop_mask",crop_mask)
         if torch.all(flip_mask_points):
             print("No img flip !!!")
             return torch.tensor(0).float().cuda()
@@ -194,7 +186,6 @@ class Homography_Loss(nn.Module):
         #print("batch ids",batch_idxs)
         Replicated_Losses={'centerGT_depth_PRED':(True,False),'centerPRED_depth_GT':(False,True),'centerPRED_depth_PRED':(False,False)}#(use_offset3d_target,use_depth_target)
         #Replicated_Losses={'centerGT_depth_PRED':(False,True)}#(use_offset3d_target,use_depth_target)
-        count_mask=[]
         loss_term={}
         for name_losss,replicated in Replicated_Losses.items():
             use_offset3d_target,use_depth_target=replicated

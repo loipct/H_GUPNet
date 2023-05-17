@@ -21,16 +21,21 @@ torch.autograd.set_detect_anomaly(True)
 
 
 import math 
-# def weightHomo_schedule(t,maxT):
-#     return 0.2/((math.e**((1-t/maxT)**2))*math.sqrt(math.e)/math.sqrt(2))
 
-# def weightHomo_schedule(t,maxT):
-#     return 0.2/((math.e**(((1-t/maxT)**2)*math.sqrt(math.e))))
+
+#Option for weight homo
+
+"""
+    def weightHomo_schedule(t,maxT):
+        return 0.2/((math.e**(((1-t/maxT)**2)*math.sqrt(math.e))))
+
 def weightHomo_schedule0(t,maxT):
     return 0.1/(math.e**((1-t/maxT)**2))
 
 def weightHomo_schedule(t,maxT):
     return 0.2/(math.e**((1-t/maxT)**2))
+    """
+
 class Trainer(object):
     def __init__(self,
                  cfg,
@@ -66,19 +71,6 @@ class Trainer(object):
         
     def train(self):
         start_epoch = self.epoch
-#         if start_epoch > 0 and len(self.past_losses) > 0:
-#             # old past losses
-#             past_losses = self.past_losses[-1].view(-1)
-#             ei_loss = {}
-#             loss_term = ['seg_loss', 'offset2d_loss', 'size2d_loss', 'depth_loss', 'offset3d_loss', 'size3d_loss', 'heading_loss']
-#             assert len(loss_term) == len(past_losses)
-#             for i in range(len(loss_term)):
-#                 ei_loss[loss_term[i]] = past_losses[i].detach()
-
-#             print("ei_loss:",ei_loss)
-
-#         else:
-#             ei_loss = self.compute_e0_loss()
         ei_loss = self.compute_e0_loss()
         loss_weightor = Hierarchical_Task_Learning(ei_loss,5,self.past_losses, self.init_diff)
         print("past_losses:",self.past_losses)
@@ -167,14 +159,7 @@ class Trainer(object):
         self.model.train()
         disp_dict = {}
         stat_dict = {}
-        count=0
         total_homo=torch.tensor(0).float().cuda()
-        weight_homo=0
-        #compute weight for homo loss
-#         if self.epoch >=80 and self.epoch <=120:
-#             weight_homo=weightHomo_schedule0(self.epoch,120)
-#         else:
-#             weight_homo=0.1
         weight_homo=0.2
         log_weight_component = 'weight_homo_component : %.4f'%(weight_homo)    
         self.logger.info(log_weight_component)
@@ -187,9 +172,7 @@ class Trainer(object):
             # train one batch
             self.optimizer.zero_grad()
             criterion = GupnetLoss(self.epoch)
-            # homog_loss = Homography_Loss(self.epoch,calibs)
             outputs = self.model(inputs,coord_ranges,calibs,targets)
-            # homog_loss_value=homog_loss(outputs,targets)
             total_loss, loss_terms = criterion(outputs, targets)
             homo=False
             if loss_weights is not None:
@@ -197,6 +180,7 @@ class Trainer(object):
                 for key in loss_weights.keys():
                     
                     if key =='homography_loss' :
+                        #config epoch add homo
                         if self.epoch >=70 and self.epoch <= 140:
                             homog_loss = Homography_Loss(self.epoch,calibs,info,self.logger)
                             homog_loss_value=homog_loss(outputs,targets)
