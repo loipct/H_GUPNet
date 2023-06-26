@@ -1,7 +1,7 @@
 ## Introduction 
 <ins>Graduation thesis</ins> : Monocular 3D Object Detection with Deep Learning  (Ho Chi Minh City University of Technology, HCMUT)
 
-Author : [Loi Nguyen](mailto:huuloi312001@gmail.com), [Dat Ngo](mailto:phatdat906@gmail.com)
+<ins>Author</ins> : [Loi Nguyen](mailto:huuloi312001@gmail.com), [Dat Ngo](mailto:phatdat906@gmail.com)
 
 We carefully analyze and study the [GUPNet](https://arxiv.org/abs/2107.13774) base design; then proposed H_GUPNet, a monocular 3D object detection framework to enhance the object detection performance of the underlying design.
 
