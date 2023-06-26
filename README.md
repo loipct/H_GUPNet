@@ -9,6 +9,92 @@ We carefully analyze and study the [GUPNet](https://arxiv.org/abs/2107.13774) ba
 
 H_GUPNet is a Monocular 3D Object Detection framework based on the [GUPNet](https://arxiv.org/abs/2107.13774) base design combined with the [Homography loss](https://arxiv.org/abs/2204.00754) function to enhance the object detection performance of the underlying design. Most current testing is done on single stage detectors that's why we brought this loss function to two stage detector - [GUPNet](https://arxiv.org/abs/2107.13774).
 
+
+## Usage
+
+### Train
+
+Download the KITTI dataset from [KITTI website](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d), including left color images, camera calibration matrices and training labels.
+
+Clone this project and then go to the code directory:
+
+    git clone https://github.com/loiprocute/H_GUPNet.git
+    cd code
+
+We train the model on the following environments:
+
+    Python 3.6
+    Pytorch 1.1
+    Cuda 9.0
+
+You can build the environment easily by installing the requirements:
+
+    conda env create -f requirements.yml
+    conda activate gupnet
+
+Train the model:
+
+    CUDA_VISIBLE_DEVICES=0,1,2 python tools/train_val.py
+
+### Evaluate
+
+After training the model will directly feedback the detection files for evaluation (If so, you can skip this setep). But if you want to test a given checkpoint, you need to modify the "resume" of the "tester" in the code/experiments/config.yaml and then run:
+
+    python tools/train_val.py -e
+
+After that, please use the kitti evaluation devkit (deails can be refered to [FrustumPointNet](https://github.com/charlesq34/frustum-pointnets)) to evaluate:
+
+    !g++ tools/kitti_eval/evaluate_object_3d_offline_apXX.cpp -o evaluate_object_3d_offline_apXX
+    ./evaluate_object_3d_offline_apXX ../../Dataset/3d-detection/KITTI/training/label_2 ./outputs
+
+We also provide the trained checkpoint which achieved the best multi-category performance on the validation set. It can be downloaded at [here](https://drive.google.com/file/d/1-iQEjNlWMGYC-wC4kN6We_TBbBmeKsmz/view?usp=sharing). This checkpoint performance is as follow:
+
+<table align="center">
+    <tr>
+        <td rowspan="2",div align="center">Models</td>
+        <td colspan="3",div align="center">Car@IoU=0.7</td>    
+        <td colspan="3",div align="center">Pedestrian@IoU=0.5</td>  
+        <td colspan="3",div align="center">Cyclist@IoU=0.5</td>  
+    </tr>
+    <tr>
+        <td div align="center">Easy</td> 
+        <td div align="center">Mod</td> 
+        <td div align="center">Hard</td> 
+        <td div align="center">Easy</td> 
+        <td div align="center">Mod</td> 
+        <td div align="center">Hard</td> 
+        <td div align="center">Easy</td> 
+        <td div align="center">Mod</td> 
+        <td div align="center">Hard</td>  
+    </tr>
+    <tr>
+        <td div align="center">original paper</td>
+        <td div align="center">22.76%</td> 
+        <td div align="center">16.46%</td> 
+        <td div align="center">13.72%</td> 
+        <td div align="center">-</td> 
+        <td div align="center">-</td> 
+        <td div align="center">-</td> 
+        <td div align="center">-</td> 
+        <td div align="center">-</td> 
+        <td div align="center">-</td>  
+    </tr>    
+    <tr>
+        <td div align="center">released chpt</td>
+        <td div align="center">23.19%</td> 
+        <td div align="center">16.23%</td> 
+        <td div align="center">13.57%</td> 
+        <td div align="center">11.29%</td> 
+        <td div align="center">7.05%</td> 
+        <td div align="center">6.36%</td> 
+        <td div align="center">9.49%</td> 
+        <td div align="center">5.01%</td> 
+        <td div align="center">4.14%</td>  
+    </tr>
+</table>
+
+
+
 ## Other relative things
 <ins>From Author for GUPNet</ins> :
 
@@ -28,7 +114,6 @@ H_GUPNet is a Monocular 3D Object Detection framework based on the [GUPNet](http
 
 1. The training time per epoch of training on each class Car set is much higher than when training on 3 classes.
 2. Training time per epoch when combined with Homography Loss is higher than when there is no Homography Loss.
-
 
 ## Contact
 
