@@ -1,5 +1,5 @@
 ## Introduction 
-<u>Graduation thesis</u> : Monocular 3D Object Detection with Deep Learning  (Ho Chi Minh City University of Technology, HCMUT)
+<ins>Graduation thesis</ins> : Monocular 3D Object Detection with Deep Learning  (Ho Chi Minh City University of Technology, HCMUT)
 
 Author : [Loi Nguyen](mailto:huuloi312001@gmail.com), [Dat Ngo](mailto:phatdat906@gmail.com)
 
