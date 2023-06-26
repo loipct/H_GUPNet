@@ -58,7 +58,7 @@ We also provide the trained checkpoint which achieved the best multi-category pe
         <td div align="center">Hard</td> 
     </tr>
     <tr>
-        <td div align="center">original paper</td>
+        <td div align="center">[GUPNet](https://arxiv.org/abs/2107.13774)</td>
         <td div align="center">31.07%</td> 
         <td div align="center">22.94%</td> 
         <td div align="center">19.75%</td> 
@@ -67,7 +67,7 @@ We also provide the trained checkpoint which achieved the best multi-category pe
         <td div align="center">13.72%</td> 
     </tr>    
     <tr>
-        <td div align="center">released chpt</td>
+        <td div align="center">H_GUPNet</td>
         <td div align="center">31.96%</td> 
         <td div align="center">23.21%</td> 
         <td div align="center">20.07%</td> 
