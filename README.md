@@ -21,12 +21,6 @@ Clone this project and then go to the code directory:
     git clone https://github.com/loiprocute/H_GUPNet.git
     cd code
 
-We train the model on the following environments:
-
-    Python 3.6
-    Pytorch 1.1
-    Cuda 9.0
-
 You can build the environment easily by installing the requirements:
 
     conda env create -f requirements.yml
@@ -53,8 +47,7 @@ We also provide the trained checkpoint which achieved the best multi-category pe
     <tr>
         <td rowspan="2",div align="center">Models</td>
         <td colspan="3",div align="center">Car@IoU=0.7</td>    
-        <td colspan="3",div align="center">Pedestrian@IoU=0.5</td>  
-        <td colspan="3",div align="center">Cyclist@IoU=0.5</td>  
+        <td colspan="3",div align="center">Pedestrian@IoU=0.5</td>   
     </tr>
     <tr>
         <td div align="center">Easy</td> 
@@ -63,9 +56,6 @@ We also provide the trained checkpoint which achieved the best multi-category pe
         <td div align="center">Easy</td> 
         <td div align="center">Mod</td> 
         <td div align="center">Hard</td> 
-        <td div align="center">Easy</td> 
-        <td div align="center">Mod</td> 
-        <td div align="center">Hard</td>  
     </tr>
     <tr>
         <td div align="center">original paper</td>
@@ -75,9 +65,6 @@ We also provide the trained checkpoint which achieved the best multi-category pe
         <td div align="center">-</td> 
         <td div align="center">-</td> 
         <td div align="center">-</td> 
-        <td div align="center">-</td> 
-        <td div align="center">-</td> 
-        <td div align="center">-</td>  
     </tr>    
     <tr>
         <td div align="center">released chpt</td>
@@ -86,10 +73,7 @@ We also provide the trained checkpoint which achieved the best multi-category pe
         <td div align="center">13.57%</td> 
         <td div align="center">11.29%</td> 
         <td div align="center">7.05%</td> 
-        <td div align="center">6.36%</td> 
-        <td div align="center">9.49%</td> 
-        <td div align="center">5.01%</td> 
-        <td div align="center">4.14%</td>  
+        <td div align="center">6.36%</td>  
     </tr>
 </table>
 
