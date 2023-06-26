@@ -10,7 +10,7 @@ We carefully analyze and study the [GUPNet](https://arxiv.org/abs/2107.13774) ba
 H_GUPNet is a Monocular 3D Object Detection framework based on the [GUPNet](https://arxiv.org/abs/2107.13774) base design combined with the [Homography loss](https://arxiv.org/abs/2204.00754) function to enhance the object detection performance of the underlying design. Most current testing is done on single stage detectors that's why we brought this loss function to two stage detector - [GUPNet](https://arxiv.org/abs/2107.13774).
 
 ## Other relative things
-From Author :
+<ins>From Author for GUPNet</ins> :
 
 1. The releases code is originally set to train on multi-category here. If you would like to train on the single category (Car), please modify the code/experiments/config.yaml. Single-category training can lead to higher performance on the Car. 
 2. This implementation includes some tricks that do not describe in the paper. And We will also update the principle of them in the [supplementary materials](https://github.com/loiprocute/H_GUPNet/blob/main/pdf/supp.pdf)
@@ -23,6 +23,12 @@ From Author :
  - Set the bsize as big as possible.
  -  A trick may work but I cannot make sure. If your biggest bsize is b, you can re-scale the learning rate as lr*b/32. For example, your biggest bsize is 16 and our initial lr is 0.00125. You can set the lr as 0.00125*16/32.
 9. The uncertainty loss can be negative.
+
+<ins>Training time</ins>:
+
+1. The training time per epoch of training on each class Car set is much higher than when training on 3 classes.
+2. Training time per epoch when combined with Homography Loss is higher than when there is no Homography Loss.
+
 
 ## Contact
 
