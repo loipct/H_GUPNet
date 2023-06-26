@@ -41,7 +41,7 @@ After that, please use the kitti evaluation devkit (deails can be refered to [Fr
     !g++ tools/kitti_eval/evaluate_object_3d_offline_apXX.cpp -o evaluate_object_3d_offline_apXX
     ./evaluate_object_3d_offline_apXX ../../Dataset/3d-detection/KITTI/training/label_2 ./outputs
 
-We also provide the trained checkpoint which achieved the best Car-category performance on the validation set. It can be downloaded at [here](https://drive.google.com/file/d/1-iQEjNlWMGYC-wC4kN6We_TBbBmeKsmz/view?usp=sharing). This checkpoint performance is as follow:
+We also provide the trained checkpoint which achieved the best Car-category performance on the validation set. It can be downloaded at [here](https://drive.google.com/file/d/1pH5QpwAbna67bSK5-DBDxX5zCw_BS55h/view?usp=sharing). This checkpoint performance is as follow:
 
 <table align="center">
     <tr>
