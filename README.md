@@ -46,8 +46,8 @@ We also provide the trained checkpoint which achieved the best multi-category pe
 <table align="center">
     <tr>
         <td rowspan="2",div align="center">Models</td>
-        <td colspan="3",div align="center">Car@IoU=0.7</td>    
-        <td colspan="3",div align="center">Pedestrian@IoU=0.5</td>   
+        <td colspan="3",div align="center">Car@BEV IoU=0.7</td>    
+        <td colspan="3",div align="center">Car@3D IoU=0.7</td>   
     </tr>
     <tr>
         <td div align="center">Easy</td> 
@@ -59,21 +59,21 @@ We also provide the trained checkpoint which achieved the best multi-category pe
     </tr>
     <tr>
         <td div align="center">original paper</td>
+        <td div align="center">31.07%</td> 
+        <td div align="center">22.94%</td> 
+        <td div align="center">19.75%</td> 
         <td div align="center">22.76%</td> 
         <td div align="center">16.46%</td> 
         <td div align="center">13.72%</td> 
-        <td div align="center">-</td> 
-        <td div align="center">-</td> 
-        <td div align="center">-</td> 
     </tr>    
     <tr>
         <td div align="center">released chpt</td>
-        <td div align="center">23.19%</td> 
-        <td div align="center">16.23%</td> 
-        <td div align="center">13.57%</td> 
-        <td div align="center">11.29%</td> 
-        <td div align="center">7.05%</td> 
-        <td div align="center">6.36%</td>  
+        <td div align="center">31.96%</td> 
+        <td div align="center">23.21%</td> 
+        <td div align="center">20.07%</td> 
+        <td div align="center">23.55%</td> 
+        <td div align="center">16.58%</td> 
+        <td div align="center">14.61%</td>  
     </tr>
 </table>
 
