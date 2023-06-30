@@ -5,6 +5,6 @@
 
 `visualize_loss` visualize losses or weights from evaluation.
 
-### Another visualization can be helpful: <a href="https://github.com/kuixu/kitti_object_vis" target="_blank">https://github.com/kuixu/kitti_object_vis</a>
+Another visualization can be helpful: <a href="https://github.com/kuixu/kitti_object_vis" target="_blank">https://github.com/kuixu/kitti_object_vis</a>
 
 
