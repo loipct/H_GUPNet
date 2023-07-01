@@ -78,8 +78,7 @@ We also provide the trained checkpoint which achieved the best Car-category perf
 </table>
 
 ### Visualize
-
-The code will be coming soon.
+We also provide several methods to visualize the KITTI Object : [Visualization KITTI Object](https://github.com/loiprocute/H_GUPNet/tree/main/code/visualize)
 
 ## Other relative things
 <ins>From Author for GUPNet</ins> :
@@ -106,4 +105,4 @@ The code will be coming soon.
 If you have any question about this project, please feel free to contact huuloi312001@gmail.com or phatdat906@gmail.com
 
 ## Acknowledgements
-This code benefits from the excellent works: [GUPNet](https://github.com/SuperMHP/GUPNet).
+This code benefits from the excellent works [GUPNet](https://github.com/SuperMHP/GUPNet) and it also benefits from [kitti_object_vis](https://github.com/kuixu/kitti_object_vis). Thanks for their great works!
